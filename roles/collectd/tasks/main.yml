@@ -1,5 +1,2 @@
-- include_tasks: install.yml
-  when: collectd_state == "present"
-
-- include_tasks: remove.yml
-  when: collectd_state == "absent"
+- name: Install or remove collectd
+  include_tasks: "{{ collectd_action }}.yml"

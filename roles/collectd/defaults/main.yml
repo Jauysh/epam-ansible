@@ -1,1 +1,1 @@
-collectd_state: "present"  # Default: install
+collectd_action: install

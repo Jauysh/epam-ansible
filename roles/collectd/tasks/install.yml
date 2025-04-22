@@ -1,8 +1,9 @@
-- name: Install collectd and plugin
+- name: Install collectd and plugins
   package:
     name:
       - collectd
       - collectd-core
+      - collectd-write_prometheus
     state: latest
   notify: restart collectd
 
