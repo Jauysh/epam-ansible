@@ -9,7 +9,7 @@
     name:
       - collectd
       - collectd-core
-      - collectd-write_prometheus
+      - write_prometheus
     state: absent
 
 - name: Remove collectd config files

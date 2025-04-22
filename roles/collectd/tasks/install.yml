@@ -8,7 +8,7 @@
     name:
       - collectd
       - collectd-core
-      - collectd-write-prometheus
+      - write-prometheus
     state: latest
   notify: restart collectd
 
