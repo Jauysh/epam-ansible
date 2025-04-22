@@ -1,0 +1,38 @@
+---
+- name: Install collectd and plugins
+  apt:
+    name:
+      - collectd
+      - collectd-core
+    state: present
+    update_cache: yes
+
+- name: Create Prometheus plugin config
+  copy:
+    dest: /etc/collectd/collectd.conf.d/prometheus.conf
+    content: |
+      LoadPlugin write_prometheus
+      <Plugin write_prometheus>
+          Port 9103
+      </Plugin>
+
+- name: Enable and start collectd service
+  systemd:
+    name: collectd
+    state: started
+    enabled: yes
+
+- name: Ensure plugins are loaded
+  lineinfile:
+    path: /etc/collectd/collectd.conf
+    regexp: "^LoadPlugin {{ item }}$"
+    line: "LoadPlugin {{ item }}"
+  loop:
+    - df
+    - processes
+    - protocols
+    - swap
+    - tcpconns
+    - uptime
+    - users
+    - vmem

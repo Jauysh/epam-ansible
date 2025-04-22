@@ -1,0 +1,4 @@
+- name: Manage collectd service
+  hosts: all
+  roles:
+    - collectd
