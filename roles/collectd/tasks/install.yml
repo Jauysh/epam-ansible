@@ -6,6 +6,23 @@
     state: latest
   notify: restart collectd
 
+- name: Ensure /etc/collectd.d directory exists
+  file:
+    path: /etc/collectd.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Deploy Prometheus config
+  template:
+    src: prometheus.conf.j2
+    dest: /etc/collectd.d/prometheus.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart collectd
+
 - name: Deploy Prometheus config
   template:
     src: prometheus.conf.j2
