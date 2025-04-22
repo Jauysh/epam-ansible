@@ -1,0 +1,9 @@
+---
+all:
+  hosts:
+    s1:
+      ansible_host: 192.168.100.200
+      ansible_user: s1
+    s2:
+      ansible_host: 192.168.100.178
+      ansible_user: s2
