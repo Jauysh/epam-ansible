@@ -1,0 +1,17 @@
+- name: Stop and disable collectd
+  systemd:
+    name: collectd
+    state: stopped
+    enabled: no
+
+- name: Remove collectd packages
+  package:
+    name:
+      - collectd
+      - collectd-write_prometheus
+    state: absent
+
+- name: Delete config files
+  file:
+    path: /etc/collectd.d/
+    state: absent
