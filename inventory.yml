@@ -5,9 +5,7 @@ all:
       ansible_host: 192.168.100.200
       ansible_user: s1
       ansible_become: true
-      ansible_become_password: Q1q
     s2:
       ansible_host: 192.168.100.178
       ansible_user: s2
       ansible_become: true
-      ansible_become_password: Q1q
