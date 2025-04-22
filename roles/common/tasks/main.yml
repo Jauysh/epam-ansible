@@ -1,0 +1,20 @@
+---
+- name: Install required packages
+  apt:
+    name:
+      - curl
+      - lsof
+      - mc
+      - nano
+      - tar
+      - unzip
+      - vim
+    state: present
+    update_cache: yes
+- name: Ensure SELinux is disabled
+  copy:
+    dest: /etc/selinux/config
+    content: |
+      SELINUX=disabled
+      SELINUXTYPE=targeted
+  when: ansible_facts['os_family'] == "RedHat"
