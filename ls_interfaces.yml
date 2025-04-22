@@ -1,0 +1,10 @@
+- name: List network interfaces
+  hosts: all
+  tasks:
+    - name: Show network interfaces
+      ansible.builtin.command: ip a
+      register: result
+
+    - name: Print interfaces
+      ansible.builtin.debug:
+        var: result.stdout_lines
