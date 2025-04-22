@@ -2,6 +2,7 @@
   package:
     name:
       - collectd
+      - collectd-core
       - collectd-write_prometheus
     state: latest
   notify: restart collectd
