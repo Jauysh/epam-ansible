@@ -1,9 +1,14 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
 - name: Install collectd and plugins
   package:
     name:
       - collectd
       - collectd-core
-      - collectd-write_prometheus
+      - collectd-write-prometheus
     state: latest
   notify: restart collectd
 
